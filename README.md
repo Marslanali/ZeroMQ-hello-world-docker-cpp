@@ -8,9 +8,7 @@ Assuming you already have Docker installed on your system, if not run the follow
 
 ### Docker installation
 
-**On Debian and Ubuntu:**
-
-### Set up the docker repository.
+Set up the docker repository:
 
 ```
 sudo apt-get update
@@ -19,14 +17,14 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 ```
 
-### Install Docker Container
+Install Docker Container:
 
 ```
 sudo apt-get update
 sudo apt-get install docker-ce
 ```
 
-### Verify the installation
+Verify the installation:
 
 ```
 sudo docker run hello-world
