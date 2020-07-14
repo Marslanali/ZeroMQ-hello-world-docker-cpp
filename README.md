@@ -2,8 +2,6 @@
 
 This project runs the first example in C++ from the ØMQ guide located [here](http://zguide.zeromq.org/page:all). The Docker containers take care of all the install instructions needed to get up and running with C++ and ØMQ.
 
-## Getting Started
-
 Assuming you already have Docker installed on your system, if not run the following command to install.
 
 ### Docker installation
@@ -29,6 +27,8 @@ Verify the installation:
 ```
 sudo docker run hello-world
 ```
+
+## Getting Started
 
 Run the following command to create a virtual network which the client and server will communicate over using ØMQ.
 
