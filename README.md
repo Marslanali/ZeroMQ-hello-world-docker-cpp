@@ -84,6 +84,22 @@ docker run -it --network=zmq --net-alias=zmq-hello-world-server-cpp 0f46b3a6544c
 
 Using the ID copied from the previous step. The containers will now start talking to each other as the client sends through 10 messages before completing.
 
+
+## Copy test file to running container
+
+To copy sample files from local dir to running infer container:
+
+```
+sudo docker cp /<path>/test.c 86f2af5a33cc:/<container_name>/src
+```
+
+## mount dir to running container
+
+```
+sudo docker run -ti --rm -v`pwd`:/<mount_dir_name> <container_image_name>
+```
+
+
 ## Executing the docker containers from CLion on OSX
 
 Assuming you are using the latest native version of Docker, run the following command to pipe the output of Docker to a URL that CLion will understand:

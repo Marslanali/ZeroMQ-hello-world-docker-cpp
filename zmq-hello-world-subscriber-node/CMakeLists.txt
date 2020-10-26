@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.15)
 project(zmq_hello_world)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread")
 
 ## load in pkg-config support
 find_package(PkgConfig)
@@ -23,9 +24,9 @@ find_library(ZeroMQ_LIBRARY
 set(SOURCE_FILES
         src/hwsubscriber.cpp)
 
-add_executable(zmq_hello_world ${SOURCE_FILES})
+add_executable(zmq_hello_world ${SOURCE_FILES} )
 
 ## add the include directory to our compile directives
 target_include_directories(zmq_hello_world PUBLIC ${ZeroMQ_INCLUDE_DIR})
 ## at the 0mq library to our link directive
-target_link_libraries(zmq_hello_world PUBLIC ${ZeroMQ_LIBRARY})
+target_link_libraries(zmq_hello_world PUBLIC ${ZeroMQ_LIBRARY} libpthread.so.0)

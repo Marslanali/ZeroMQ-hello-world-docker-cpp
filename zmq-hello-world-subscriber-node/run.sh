@@ -1,11 +1,16 @@
 #!/bin/sh
 
+# Copyright (c) Facebook, Inc. and its affiliates.
+#
+# This source code is licensed under the MIT license found in the
+# LICENSE file in the root directory of this source tree.
+
 EXEC_NAME="$0"
 
 show_usage() {
   echo "Usage: $EXEC_NAME [-h]"
   echo ""
-  echo "Build and run the docker image. See /README.md for more"
+  echo "Build and run the docker image. See infer/docker/README.md for more"
   echo "information."
   echo ""
   echo "Options:"
@@ -40,11 +45,11 @@ fi
 
 
 NAME="zmq-hello-world-subscriber-cpp"
+
 docker network create zmq
 docker build -t $NAME . && \
 echo "*************************************************************" && \
-echo "Docker Containner with ZeroMQ Hello World Subscriber" && \
-echo "zmq-hello-world-subscriber-cpp"            && \
+echo "Docker Containner with ZeroMQ Hello World subscriber"           && \
+  echo "zmq-hello-world-subscriber-cpp"                                 && \
 echo "*************************************************************" && \
-docker run -it --network=zmq --net-alias=$NAME $NAME /bin/bash
-
+docker run -it --network=zmq $NAME /bin/bash

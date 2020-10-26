@@ -45,10 +45,11 @@ fi
 
 
 NAME="zmq-hello-world-publisher-cpp"
+
 docker network create zmq
 docker build -t $NAME . && \
 echo "*************************************************************" && \
 echo "Docker Containner with ZeroMQ Hello World Publisher"           && \
 echo "zmq-hello-world-publisher-cpp"                                 && \
 echo "*************************************************************" && \
-docker run -it --network=zmq --net-alias=$NAME $NAME /bin/bash
+docker run -it --network=zmq $NAME /bin/bash

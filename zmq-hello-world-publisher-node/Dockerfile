@@ -6,7 +6,7 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y git build-essential libtool autoconf automake pkg-config unzip libkrb5-dev
 RUN apt-get install -q -y libssl-dev
 RUN cd /tmp && git clone git://github.com/jedisct1/libsodium.git && cd libsodium && git checkout e2a30a && ./autogen.sh && ./configure && make check && make install && ldconfig
-RUN cd /tmp && git clone --depth 1 --branch v4.3.3 https://github.com/zeromq/libzmq.git && cd libzmq && ./autogen.sh && ./configure && make
+RUN cd /tmp && git clone  https://github.com/zeromq/libzmq.git && cd libzmq && ./autogen.sh && ./configure && make
 # RUN cd /tmp/libzmq && make check
 RUN cd /tmp/libzmq && make install && ldconfig
 RUN rm /tmp/* -rf
@@ -22,8 +22,12 @@ RUN rm /tmp/* -rf
 
 # Add ZMQ files needed for C++
 
-RUN cd /tmp && git clone --depth 1 --branch v4.6.0 https://github.com/zeromq/cppzmq.git && cp cppzmq/zmq.hpp /usr/local/include/zmq.hpp
+RUN cd /tmp && git clone  https://github.com/zeromq/cppzmq.git && cp cppzmq/zmq.hpp /usr/local/include/zmq.hpp
 RUN cd /tmp && cp cppzmq/zmq_addon.hpp /usr/local/include/zmq_addon.hpp
+
+# BOOST Libray
+
+# RUN  apt-get install -y  libboost-dev libboost-all-dev
 
 # Setup Hello World example
 
@@ -37,4 +41,4 @@ RUN make
 
 EXPOSE 5555
 
-CMD ./zmq_hello_world
+#CMD ./zmq_hello_world
